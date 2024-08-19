@@ -16,17 +16,44 @@ export const createBlogAction = async (
   )
 
   // If any form fields are invalid, return early
-  if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors)
+  if (!validatedFields.success)
     return {
       errors: validatedFields.error.flatten().fieldErrors,
     }
-  }
 
   // Create blog
   await blog.services.create({
     ...validatedFields.data,
     slug: slugifyString(validatedFields.data.title),
+  })
+
+  revalidatePath('/dashboard/blog')
+  redirect('/dashboard/blog')
+}
+
+export const updateBlogAction = async (
+  id: string,
+  state: BlogFormState,
+  formData: FormData
+) => {
+  // Validate form fields
+  const validatedFields = blog.schema.create.safeParse(
+    Object.fromEntries(removeFormDataEmptyString(formData).entries())
+  )
+
+  // If any form fields are invalid, return early
+  if (!validatedFields.success)
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    }
+
+  // Update blog
+  await blog.services.update({
+    id,
+    blog: {
+      ...validatedFields.data,
+      slug: slugifyString(validatedFields.data.title),
+    },
   })
 
   revalidatePath('/dashboard/blog')

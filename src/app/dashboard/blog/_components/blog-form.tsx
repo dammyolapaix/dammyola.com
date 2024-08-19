@@ -11,16 +11,20 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useFormState } from 'react-dom'
-import { createBlogAction } from '@/action/blog'
+import { createBlogAction, updateBlogAction } from '@/action/blog'
 import SubmitButton from '@/components/custom/submit-button'
 import ErrorMessage from '@/components/custom/error-message'
 import { Textarea } from '@/components/ui/textarea'
 import CustomCldUploadWidget from '@/components/custom/cld-upload-widget'
 import { useState } from 'react'
+import { BlogType } from '@/types/blog'
 
-export default function BlogForm() {
-  const [state, action] = useFormState(createBlogAction, undefined)
-  const [image, setImage] = useState('')
+export default function BlogForm({ blog }: { blog?: BlogType }) {
+  const [state, action] = useFormState(
+    !blog ? createBlogAction : updateBlogAction.bind(null, blog.id),
+    undefined
+  )
+  const [image, setImage] = useState(blog?.image || '')
 
   const handleUploadImage = (url?: string) => {
     if (url) setImage(url)
@@ -30,7 +34,7 @@ export default function BlogForm() {
     <form action={action}>
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Create Blog</CardTitle>
+          <CardTitle>{!blog ? 'Create Blog' : 'Update Blog'}</CardTitle>
           <CardDescription>
             Add the information of your blog below
           </CardDescription>
@@ -38,7 +42,12 @@ export default function BlogForm() {
         <CardContent>
           <div className="grid w-full items-center gap-4 mb-3">
             <Label htmlFor="title">Title</Label>
-            <Input name="title" id="title" placeholder="My new blog" />
+            <Input
+              name="title"
+              defaultValue={blog?.title || ''}
+              id="title"
+              placeholder="My new blog"
+            />
             <ErrorMessage errors={state?.errors.title} />
           </div>
           <div className="grid w-full items-center gap-4 mb-3">
@@ -48,7 +57,7 @@ export default function BlogForm() {
               value={image}
               id="image"
               placeholder="blog image"
-              disabled
+              // disabled
             />
             <ErrorMessage errors={state?.errors.image} />
           </div>
@@ -59,6 +68,7 @@ export default function BlogForm() {
             <Label htmlFor="content">Content</Label>
             <Textarea
               name="content"
+              defaultValue={blog?.content || ''}
               placeholder="Type your content here."
               id="content"
             />
@@ -66,7 +76,7 @@ export default function BlogForm() {
           </div>
         </CardContent>
         <CardFooter>
-          <SubmitButton cta="Create" />
+          <SubmitButton cta={!blog ? 'Create' : 'Update'} />
         </CardFooter>
       </Card>
     </form>
