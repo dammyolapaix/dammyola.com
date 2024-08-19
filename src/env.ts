@@ -12,6 +12,9 @@ const stringBoolean = z.coerce
 
 const EnvSchema = z.object({
   DATABASE_URL: z.string(),
+  NEXT_PUBLIC_CLOUDINARY_API_KEY: z.string(),
+  CLOUDINARY_API_SECRET: z.string(),
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string(),
   DB_MIGRATING: stringBoolean,
   DB_SEEDING: stringBoolean,
 })
