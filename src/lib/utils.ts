@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import slugify from 'slugify'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -24,4 +25,8 @@ export function removeFormDataEmptyString(formData: FormData) {
       filteredFormData.append(key, value)
   }
   return filteredFormData
+}
+
+export function slugifyString(value: string) {
+  return slugify(value, { lower: true, trim: true })
 }

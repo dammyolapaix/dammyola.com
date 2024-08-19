@@ -1,7 +1,7 @@
 'use server'
 
 import blog from '@/feature/blog'
-import { removeFormDataEmptyString } from '@/lib/utils'
+import { removeFormDataEmptyString, slugifyString } from '@/lib/utils'
 import { BlogFormState } from '@/types/blog'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
@@ -24,7 +24,10 @@ export const createBlogAction = async (
   }
 
   // Create blog
-  await blog.services.create(validatedFields.data)
+  await blog.services.create({
+    ...validatedFields.data,
+    slug: slugifyString(validatedFields.data.title),
+  })
 
   revalidatePath('/dashboard/blog')
   redirect('/dashboard/blog')

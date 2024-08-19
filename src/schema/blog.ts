@@ -8,6 +8,7 @@ export default class BlogSchema {
       .string({ required_error: 'Title is required' })
       .min(3, 'Title must be at least 3 characters')
       .trim(),
+    slug: z.string().optional(),
     content: z
       .string()
       .min(3, 'Content must be at least 3 characters')
