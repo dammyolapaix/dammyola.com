@@ -10,13 +10,13 @@ import {
 
 const blogs = pgTable('blogs', {
   id: uuid('id').primaryKey().defaultRandom().notNull(),
-  title: varchar('title', { length: 256 }).unique(),
+  title: varchar('title', { length: 256 }).unique().notNull(),
   slug: varchar('slug', { length: 256 }).unique(),
   description: varchar('description', { length: 256 }),
   image: varchar('image'),
   content: text('content'),
   isPublished: boolean('is_published').default(false).notNull(),
-  publishedDate: date('published_date'),
+  publishedDate: date('published_date', { mode: 'string' }),
   createdAt: timestamp('created_at', { mode: 'string' }).defaultNow(),
   updatedAt: timestamp('updated_at', { mode: 'string' }).defaultNow(),
 })
