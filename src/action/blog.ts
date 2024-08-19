@@ -1,5 +1,9 @@
+'use server'
+
 import blog from '@/feature/blog'
+import { removeFormDataEmptyString } from '@/lib/utils'
 import { BlogFormState } from '@/types/blog'
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export const createBlogAction = async (
@@ -8,17 +12,20 @@ export const createBlogAction = async (
 ) => {
   // Validate form fields
   const validatedFields = blog.schema.create.safeParse(
-    Object.fromEntries(formData.entries())
+    Object.fromEntries(removeFormDataEmptyString(formData).entries())
   )
 
   // If any form fields are invalid, return early
-  if (!validatedFields.success)
+  if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors)
     return {
       errors: validatedFields.error.flatten().fieldErrors,
     }
+  }
 
   // Create blog
   await blog.services.create(validatedFields.data)
 
-  redirect('/dashboard')
+  revalidatePath('/dashboard/blog')
+  redirect('/dashboard/blog')
 }

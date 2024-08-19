@@ -1,3 +1,5 @@
+'server only'
+
 import db from '@/db'
 import { blogs } from '@/db/schema'
 import { BlogType, NewBlogType } from '@/types/blog'
