@@ -18,6 +18,7 @@ import { Textarea } from '@/components/ui/textarea'
 import CustomCldUploadWidget from '@/components/custom/cld-upload-widget'
 import { useState } from 'react'
 import { BlogType } from '@/types/blog'
+import Editor from '@/components/custom/editor'
 
 export default function BlogForm({ blog }: { blog?: BlogType }) {
   const [state, action] = useFormState(
@@ -25,9 +26,16 @@ export default function BlogForm({ blog }: { blog?: BlogType }) {
     undefined
   )
   const [image, setImage] = useState(blog?.image || '')
+  const [content, setContent] = useState(blog?.content || '')
 
   const handleUploadImage = (url?: string) => {
     if (url) setImage(url)
+  }
+
+  const handleContentChange = (richText: string) => {
+    setContent(richText)
+
+    console.log(richText)
   }
 
   return (
@@ -68,10 +76,11 @@ export default function BlogForm({ blog }: { blog?: BlogType }) {
             <Label htmlFor="content">Content</Label>
             <Textarea
               name="content"
-              defaultValue={blog?.content || ''}
-              placeholder="Type your content here."
+              defaultValue={content}
               id="content"
+              className="hidden"
             />
+            <Editor content={content} onChange={handleContentChange} />
             <ErrorMessage errors={state?.errors.content} />
           </div>
         </CardContent>
