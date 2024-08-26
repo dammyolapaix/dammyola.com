@@ -19,6 +19,7 @@ import CustomCldUploadWidget from '@/components/custom/cld-upload-widget'
 import { useState } from 'react'
 import { BlogType } from '@/types/blog'
 import Editor from '@/components/custom/editor'
+import Tiptap from '@/components/custom/tiptap'
 
 export default function BlogForm({ blog }: { blog?: BlogType }) {
   const [state, action] = useFormState(
@@ -82,6 +83,10 @@ export default function BlogForm({ blog }: { blog?: BlogType }) {
             />
             <Editor content={content} onChange={handleContentChange} />
             <ErrorMessage errors={state?.errors.content} />
+          </div>
+          <div className="grid w-full items-center gap-4">
+            <Label htmlFor="content">TipTap</Label>
+            <Tiptap content={content} onChange={handleContentChange} />
           </div>
         </CardContent>
         <CardFooter>
