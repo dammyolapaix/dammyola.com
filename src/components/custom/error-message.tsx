@@ -3,7 +3,9 @@ export default function ErrorMessage({ errors }: { errors?: string[] }) {
     <>
       {errors &&
         errors.map((error) => (
-          <p className="text-sm font-medium text-destructive">{error}</p>
+          <p key={error} className="text-sm font-medium text-destructive">
+            {error}
+          </p>
         ))}
     </>
   )

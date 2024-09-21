@@ -4,13 +4,13 @@ import { useEditor, EditorContent, ReactNodeViewRenderer } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import EditorMenubar from './editor-menubar'
 // import CodeBlock from '@tiptap/extension-code-block'
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 
-import { all, createLowlight } from 'lowlight'
-import CodeBlockComponent from './CodeBlockComponent'
+// import { all, createLowlight } from 'lowlight'
+// import CodeBlockComponent from './CodeBlockComponent'
 
 // create a lowlight instance
-const lowlight = createLowlight(all)
+// const lowlight = createLowlight(all)
 
 export default function Editor({
   content,
@@ -22,11 +22,11 @@ export default function Editor({
   const editor = useEditor({
     extensions: [
       StarterKit,
-      CodeBlockLowlight.extend({
-        addNodeView() {
-          return ReactNodeViewRenderer(CodeBlockComponent)
-        },
-      }).configure({ lowlight }),
+      // CodeBlockLowlight.extend({
+      //   addNodeView() {
+      //     return ReactNodeViewRenderer(CodeBlockComponent)
+      //   },
+      // }).configure({ lowlight }),
     ],
     content,
     editorProps: {
