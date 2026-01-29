@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -124,5 +125,28 @@
   body {
     @apply bg-background text-foreground;
     @apply bg-background text-foreground;
+  }
+}
+
+/* Code block dark theme overrides */
+@layer components {
+  /* Force dark theme for all code blocks */
+  pre {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+  }
+
+  pre code {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  /* Override rehype-pretty-code inline styles */
+  pre[style*="background"] {
+    background-color: #1e1e1e !important;
+  }
+
+  pre[style*="color"] {
+    color: #d4d4d4 !important;
   }
 }
