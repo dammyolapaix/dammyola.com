@@ -1,0 +1,11 @@
+export { Hero } from "./hero";
+export { SocialProof } from "./social-proof";
+export { Problem } from "./problem";
+export { Solution } from "./solution";
+export { HowItWorks } from "./how-it-works";
+export { Packages } from "./packages";
+export { CaseStudies } from "./case-studies";
+export { FAQ } from "./faq";
+export { FinalCta } from "./final-cta";
+export { StickyHeader } from "./sticky-header";
+export { ExitIntentPopup } from "./exit-intent-popup";
