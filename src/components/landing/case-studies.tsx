@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
@@ -6,6 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CONSULTATION_URL, PROFILE_IMAGE_PATH } from "@/lib/constants";
+
+const primaryButtonClass =
+  "inline-flex h-12 items-center justify-center gap-2 rounded-none border border-transparent bg-primary px-10 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 const caseStudies = [
   {
@@ -48,7 +53,7 @@ export function CaseStudies() {
       className="border-b border-border bg-muted/20 px-6 py-16 md:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-5xl">
-        <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+        <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
           Real Products. Real Results.
         </h2>
         <div className="mt-10 grid gap-8 sm:grid-cols-2">
@@ -91,15 +96,25 @@ export function CaseStudies() {
             </Card>
           ))}
         </div>
-        <p className="mt-8 text-center">
-          <Link
-            href="#case-studies"
-            className="font-medium text-primary underline-offset-4 hover:underline"
+        <div className="mt-10 flex justify-center">
+          <a
+            href={CONSULTATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={primaryButtonClass}
           >
-            See All Case Studies →
-          </Link>
-        </p>
+            <Image
+              src={PROFILE_IMAGE_PATH}
+              alt="Dammy Ola — the person behind this site"
+              width={24}
+              height={24}
+              className="rounded-full object-cover"
+            />
+            Book a Free Consultation
+          </a>
+        </div>
       </div>
     </section>
   );
 }
+

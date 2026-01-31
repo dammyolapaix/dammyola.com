@@ -6,20 +6,21 @@ const faqItems = [
     question: "How much does it cost to build an app?",
     answer: (
       <>
-        It depends on what you&apos;re building. Our packages start at $2,000
-        for audits and go up to $15,000 for full MVPs. Most founders spend
-        $8,000-$12,000 for their first product.{" "}
-        <Link href="#packages" className="font-medium text-primary hover:underline">
-          See our packages
+        Our MVP Builder is $1,000 for the first 5 clients (then $3,500), and typically takes 3–4 weeks.{" "}
+        <Link
+          href="#packages"
+          className="font-medium text-primary hover:underline"
+        >
+          See the MVP Builder
         </Link>{" "}
-        for detailed pricing.
+        for details, or book a free consultation for a tailored proposal.
       </>
     ),
   },
   {
     question: "How long does it take?",
     answer:
-      "Most projects take 4-8 weeks. Simple features can be done in 2-3 weeks. Full MVPs typically take 6-8 weeks. We work in 2-week sprints so you see progress regularly.",
+      "Most projects take 3-4 weeks. We work in 2-week sprints so you see progress regularly.",
   },
   {
     question: "What if I'm not technical? Will you understand what I need?",
@@ -40,7 +41,7 @@ export function FAQ() {
       className="border-b border-border bg-background px-6 py-16 md:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+        <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
           Common Questions
         </h2>
         <dl className="mt-10 space-y-8">
@@ -52,10 +53,6 @@ export function FAQ() {
           ))}
         </dl>
         <p className="mt-10 text-muted-foreground">
-          <Link href="#faq" className="font-medium text-primary hover:underline">
-            See All FAQs
-          </Link>
-          {" → "}
           Still have questions?{" "}
           <a
             href={CONSULTATION_URL}

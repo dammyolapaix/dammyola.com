@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 const title = `Build Your Product Without Learning to Code | ${SITE_NAME}`;
 const description =
-  "We build software and AI products for non-technical founders. From idea to launch in 6-8 weeks. No technical co-founder needed. Book a free consultation.";
+  "We build software and AI products for non-technical founders. From idea to launch in 3-4 weeks. No technical co-founder needed. Book a free consultation.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -23,7 +23,7 @@ const personJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description:
-    "I build software and AI products for non-technical founders. From idea to launch in 6-8 weeks.",
+    "I build software and AI products for non-technical founders. From idea to launch in 3-4 weeks.",
   sameAs: PERSON_SAME_AS.filter(Boolean),
 };
 

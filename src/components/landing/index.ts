@@ -1,3 +1,4 @@
+export { CtaButton } from "./cta-button";
 export { Hero } from "./hero";
 export { SocialProof } from "./social-proof";
 export { Problem } from "./problem";

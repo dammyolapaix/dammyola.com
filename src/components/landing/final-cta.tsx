@@ -1,8 +1,4 @@
-import Link from "next/link";
-import { CONSULTATION_URL } from "@/lib/constants";
-
-const ctaButtonClass =
-  "inline-flex h-9 items-center justify-center gap-1.5 rounded-none border border-transparent bg-primary-foreground px-6 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary-foreground/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring";
+import { CtaButton } from "./cta-button";
 
 export function FinalCta() {
   return (
@@ -20,16 +16,17 @@ export function FinalCta() {
           technical jargon. Just a 30-minute conversation.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href={CONSULTATION_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={ctaButtonClass}
-          >
-            Book a Free Consultation
-          </a>
+          <div className="flex flex-col items-center gap-2">
+            <CtaButton variant="inverted">Book a Free Consultation</CtaButton>
+            {/* <p className="text-sm text-primary-foreground/80">
+              Join 20+ founders who&apos;ve launched with us · Free 30-min call
+            </p> */}
+            <p className="text-sm text-primary-foreground/80">
+              Launched with us. Free 30-min call
+            </p>
+          </div>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm">
+        {/* <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm">
           <Link
             href="#packages"
             className="underline-offset-4 hover:underline"
@@ -47,7 +44,7 @@ export function FinalCta() {
           <Link href="#download" className="underline-offset-4 hover:underline">
             Download Product Brief Template
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

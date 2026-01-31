@@ -1,16 +1,15 @@
 import {
   Hero,
-  SocialProof,
   Problem,
   Solution,
   HowItWorks,
   Packages,
-  CaseStudies,
   FAQ,
   FinalCta,
   StickyHeader,
   ExitIntentPopup,
 } from "@/components/landing";
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -20,7 +19,7 @@ const faqJsonLd = {
       name: "How much does it cost to build an app?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "It depends on what you're building. Our packages start at $2,000 for audits and go up to $15,000 for full MVPs. Most founders spend $8,000-$12,000 for their first product. See our packages for detailed pricing.",
+        text: "Our MVP Builder is $1,000 for the first 5 clients (then $3,500), and typically takes 3-4 weeks. Book a free consultation for a detailed proposal.",
       },
     },
     {
@@ -28,7 +27,7 @@ const faqJsonLd = {
       name: "How long does it take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most projects take 4-8 weeks. Simple features can be done in 2-3 weeks. Full MVPs typically take 6-8 weeks. We work in 2-week sprints so you see progress regularly.",
+        text: "Most projects take 3-4 weeks. We work in 2-week sprints so you see progress regularly.",
       },
     },
     {
@@ -63,12 +62,12 @@ export default function HomePage() {
       <ExitIntentPopup />
       <main id="main-content" role="main">
         <Hero />
-        <SocialProof />
+        {/* <SocialProof /> */}
         <Problem />
         <Solution />
         <HowItWorks />
         <Packages />
-        <CaseStudies />
+        {/* <CaseStudies /> */}
         <FAQ />
         <FinalCta />
         <span id="download" className="sr-only" aria-hidden />

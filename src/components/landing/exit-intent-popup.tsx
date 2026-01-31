@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { CONSULTATION_URL } from "@/lib/constants";
 
 const STORAGE_KEY = "dammyola-exit-popup-seen";
 
@@ -102,6 +103,17 @@ export function ExitIntentPopup() {
               Close
             </Button>
           </div>
+          <p className="mt-4 text-center text-sm text-muted-foreground">
+            Or{" "}
+            <a
+              href={CONSULTATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              book a free 30-min consultation
+            </a>
+          </p>
         </form>
       </div>
     </div>

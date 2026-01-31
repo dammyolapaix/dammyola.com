@@ -1,8 +1,8 @@
 export function Problem() {
   return (
     <section className="border-b border-border bg-muted/20 px-6 py-16 md:px-8 lg:px-12">
-      <div className="mx-auto max-w-3xl">
-        <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+      <div className="mx-auto max-w-3xl border-l-4 border-primary/40 pl-6 md:pl-8">
+        <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
           You Have the Idea. But You&apos;re Stuck.
         </h2>
         <p className="mt-6 text-muted-foreground">
